@@ -4,14 +4,24 @@ const computerPlays = () => {
 	return arr[getRandomNumber];
 };
 
-const playerSelection = prompt('enter rock papers or scissors').toLowerCase();
-const computerSelection = computerPlays();
+const playerPlays = () => {
+	const arr = ['rock', 'paper', 'scissors'];
+	let playerSelection = prompt('enter rock papers or scissors').toLowerCase();
+
+	return arr.includes(playerSelection) ? playerSelection : playerPlays();
+};
 
 let playerScore = 0;
 let computerScore = 0;
 
 const game = () => {
-	return playRound(playerSelection, computerSelection);
+	for (let i = 0; i < 5; i++) {
+		console.log(
+			playRound(playerPlays(), computerPlays()),
+			`Your score: ${playerScore}`,
+			`Computer score: ${computerScore}`
+		);
+	}
 };
 
 const playRound = (playerSelection, computerSelection) => {
@@ -44,8 +54,4 @@ const playRound = (playerSelection, computerSelection) => {
 	}
 };
 
-console.log(
-	game(),
-	`Your score: ${playerScore}`,
-	`Computer score: ${computerScore}`
-);
+game();
