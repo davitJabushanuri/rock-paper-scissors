@@ -8,6 +8,7 @@ const showScore = document.getElementById('score');
 const events = document.getElementById('event');
 const winner = document.getElementById('winner');
 const container = document.getElementById('info');
+const buttonContainer = document.getElementById('container');
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
@@ -59,7 +60,8 @@ const gameOver = () => {
 	if (playerScore === 5 || computerScore === 5) {
 		playerScore > computerScore
 			? (winner.textContent = `You WIn!`)
-			: (winner.textContent = `Game Over!`);
+			: (winner.textContent = `You Lost!`);
+		buttonContainer.style.display = `none`;
 		play = document.createElement('button');
 		play.classList.add('play-again');
 		play.textContent = `PlayAgain?`;
